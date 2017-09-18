@@ -4,7 +4,7 @@ class BeaconsController < ApplicationController
   # GET /beacons
   # GET /beacons.json
   def index
-    @beacons = Beacon.all
+    @beacons = Beacon.filter(params)
   end
 
   # GET /beacons/1
@@ -48,6 +48,6 @@ class BeaconsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def beacon_params
-      params.require(:beacon).permit(:description, :id)
+      params.require(:beacon).permit(:description, :id, :city_id)
     end
 end
