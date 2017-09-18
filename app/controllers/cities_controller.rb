@@ -1,5 +1,5 @@
 class CitiesController < ApplicationController
-  before_action :set_city, only: [:show, :update, :destroy]
+  before_action :set_city, only: [:show, :update, :destroy, :check_updates]
 
   # GET /cities
   # GET /cities.json
@@ -38,6 +38,10 @@ class CitiesController < ApplicationController
   # DELETE /cities/1.json
   def destroy
     @city.destroy
+  end
+
+  def check_updates
+    render json: { last_update: @city.last_update }
   end
 
   private
